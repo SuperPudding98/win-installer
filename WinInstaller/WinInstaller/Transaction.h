@@ -35,6 +35,32 @@ namespace mywininstaller
 		};
 
 		std::stack<TransactedAction> m_actions;
+
+		inline void handleRollbackError(bool throwOnError, size_t index, TransactedAction action, const std::exception* exception)
+		{
+			using std::cerr;
+			using std::endl;
+
+			cerr << "Failed to rollback action " << index;
+			if (!action.name.empty())
+			{
+				cerr << " [" << action.name << "]";
+			}
+			cerr << "." << endl;
+			if (exception)
+			{
+				cerr << "  * Error: " << exception->what() << endl;
+			}
+
+			if (throwOnError)
+			{
+				throw;
+			}
+			else
+			{
+				cerr << "  * Will still try to rollback previous actions." << endl;
+			}
+		}
 	};
 
 
@@ -56,21 +82,13 @@ namespace mywininstaller
 			{
 				action.rollbackFunc(action.object);
 			}
+			catch (const std::exception& e)
+			{
+				handleRollbackError(throwOnError, actionIndex, action, &e);
+			}
 			catch (...)
 			{
-				// TODO: better message + maybe dedicated log function
-				// Perhaps show stacktrace
-				std::cerr << "Failed to rollback action " << actionIndex;
-				if (!action.name.empty())
-				{
-					std::cerr << " [" << action.name << "]";
-				}
-				std::cerr << ". Will still try to rollback previous actions." << std::endl;
-
-				if (throwOnError)
-				{
-					throw;
-				}
+				handleRollbackError(throwOnError, actionIndex, action, nullptr);
 			}
 
 			m_actions.pop();
