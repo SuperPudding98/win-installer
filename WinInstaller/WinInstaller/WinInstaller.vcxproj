@@ -143,10 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="fsutils.h" />
     <ClInclude Include="Transaction.h" />
     <ClInclude Include="Win32Error.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fsutils.cpp" />
     <ClCompile Include="Win32Error.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
