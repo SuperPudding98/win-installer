@@ -1,48 +1,49 @@
 #include "fsutils.h"
-#include "Win32Error.h"
-#include <Windows.h>
+#include "fsutils_winapi.h"
 
 
 namespace mywininstaller
 {
 	namespace fsutils
 	{
-		using std::wstring;
+		using std::filesystem::path;
 
-		void createDirectoryThrows(const wstring& path, bool existOK)
+
+		void createDirectoryAndParentsTransacted(Transaction<path>& transaction, const path& dirPath)
 		{
-			if (!CreateDirectoryW(path.c_str(), nullptr))
+			const path& root = dirPath.root_path();
+			path subpath = "";
+			bool biggerThanRoot = false;
+			for (const path& part : dirPath)
 			{
-				DWORD errorCode = GetLastError();
-				if (!(errorCode == ERROR_ALREADY_EXISTS && existOK))
+				subpath /= part;
+				if (biggerThanRoot || subpath > root)
 				{
-					throw Win32Error(errorCode);
+					// Caching this so we don't have to do lexicographic comparison each time.
+					biggerThanRoot = true;
+
+					if (winapi::createDirectoryThrows(subpath.c_str(), nullptr, true))
+					{
+						transaction.addAction(
+							subpath,
+							[](const path& p) { winapi::removeDirectoryThrows(p.c_str()); },
+							"Create dir " + subpath.string()
+						);
+					}
 				}
 			}
 		}
 
-		void removeDirectoryThrows(const std::wstring& path)
-		{
-			if (!RemoveDirectoryW(path.c_str()))
-			{
-				throw Win32Error::fromLastError();
-			}
-		}
 
-		void copyFileThrows(const std::wstring& from, const std::wstring& to, bool overwrite)
+		void copyFileToDirTransacted(Transaction<path>& transaction, const path& fromFilePath, const path& toDirPath, bool overwrite)
 		{
-			if (!CopyFileW(from.c_str(), to.c_str(), !overwrite))
-			{
-				throw Win32Error::fromLastError();
-			}
-		}
-
-		void deleteFileThrows(const std::wstring& path)
-		{
-			if (!DeleteFileW(path.c_str()))
-			{
-				throw Win32Error::fromLastError();
-			}
+			path toFilePath = toDirPath / fromFilePath.filename();
+			winapi::copyFileThrows(fromFilePath.c_str(), toFilePath.c_str(), overwrite);
+			transaction.addAction(
+				toFilePath,
+				[](const path& p) { winapi::deleteFileThrows(p.c_str()); },
+				"Copy file " + toFilePath.string()
+			);
 		}
 	}
 }
