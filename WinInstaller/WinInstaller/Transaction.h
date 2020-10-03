@@ -2,6 +2,7 @@
 #include <functional>
 #include <stack>
 #include <iostream>
+#include <string>
 
 
 namespace mywininstaller
@@ -18,7 +19,7 @@ namespace mywininstaller
 		Transaction<T>& operator=(Transaction<T>&& other) = delete;
 		void rollback(bool throwOnError = true);
 		void commit();
-		void addAction(T object, std::function<void(T)> rollbackFunc, const std::string name = "");
+		void addAction(T object, std::function<void(T)> rollbackFunc, const std::string& name = "");
 
 	private:
 		struct TransactedAction
@@ -27,7 +28,7 @@ namespace mywininstaller
 			std::function<void(T)> rollbackFunc;
 			const std::string name;
 
-			TransactedAction(T object, std::function<void(T)> rollbackFunc, const std::string name) :
+			TransactedAction(T object, std::function<void(T)> rollbackFunc, const std::string& name) :
 				object(object),
 				rollbackFunc(rollbackFunc),
 				name(name)
@@ -106,7 +107,7 @@ namespace mywininstaller
 	}
 
 	template <typename T>
-	void Transaction<T>::addAction(T object, std::function<void(T)> rollbackFunc, const std::string name)
+	void Transaction<T>::addAction(T object, std::function<void(T)> rollbackFunc, const std::string& name)
 	{
 		m_actions.emplace(object, rollbackFunc, name);
 	}
