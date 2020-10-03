@@ -9,8 +9,6 @@ namespace mywininstaller
 	{
 		namespace winapi
 		{
-			using std::wstring;
-
 			bool createDirectoryThrows(LPCWSTR path, LPSECURITY_ATTRIBUTES securiryAttributes, bool existOK)
 			{
 				if (!CreateDirectoryW(path, securiryAttributes))

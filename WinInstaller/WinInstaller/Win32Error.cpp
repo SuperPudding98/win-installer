@@ -8,7 +8,7 @@ namespace mywininstaller
 {
 	Win32Error::Win32Error(const DWORD errorCode) :
 		m_errorCode(errorCode),
-		runtime_error(std::string("Win32 error ") + std::to_string(errorCode))
+		runtime_error("Win32 error " + std::to_string(errorCode))
 	{}
 
 	DWORD Win32Error::getErrorCode() const
