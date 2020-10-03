@@ -21,9 +21,21 @@
     <ClInclude Include="Win32Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fsutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fsutils_winapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Win32Error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fsutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fsutils_winapi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
