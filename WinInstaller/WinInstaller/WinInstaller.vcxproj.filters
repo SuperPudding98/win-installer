@@ -24,13 +24,13 @@
     <ClInclude Include="fsutils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fsutils_winapi.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="install.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="winapi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +41,13 @@
     <ClCompile Include="fsutils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fsutils_winapi.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="install.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="winapi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
