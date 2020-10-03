@@ -144,6 +144,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Transaction.h" />
+    <ClInclude Include="Win32Error.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Win32Error.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
