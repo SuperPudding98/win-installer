@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\winapi">
+      <UniqueIdentifier>{de5a0a87-251b-4cc4-8c2f-39a59e94950a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\transactions">
+      <UniqueIdentifier>{de34f49d-914c-4e01-9e87-b20f2b13e433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\transactions">
+      <UniqueIdentifier>{82d09bcb-5aeb-4337-b3af-e5a89dafc812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\winapi">
+      <UniqueIdentifier>{7a2f069a-5904-41ae-ad3b-937fe82d6671}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="install.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="winapi.h">
+      <Filter>Header Files\winapi</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32Error.h">
+      <Filter>Header Files\winapi</Filter>
+    </ClInclude>
+    <ClInclude Include="Transaction.h">
+      <Filter>Header Files\transactions</Filter>
+    </ClInclude>
+    <ClInclude Include="TransactedAction.h">
+      <Filter>Header Files\transactions</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateDirectoryTransactedAction.h">
+      <Filter>Header Files\transactions</Filter>
+    </ClInclude>
+    <ClInclude Include="CopyFileToDirectoryTransactedAction.h">
+      <Filter>Header Files\transactions</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateDirectoryAndParentsTransactedAction.h">
+      <Filter>Header Files\transactions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="install.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32Error.cpp">
+      <Filter>Source Files\winapi</Filter>
+    </ClCompile>
+    <ClCompile Include="winapi.cpp">
+      <Filter>Source Files\winapi</Filter>
+    </ClCompile>
+    <ClCompile Include="Transaction.cpp">
+      <Filter>Source Files\transactions</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateDirectoryTransactedAction.cpp">
+      <Filter>Source Files\transactions</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyFileToDirectoryTransactedAction.cpp">
+      <Filter>Source Files\transactions</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateDirectoryAndParentsTransactedAction.cpp">
+      <Filter>Source Files\transactions</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
