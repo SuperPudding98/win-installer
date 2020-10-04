@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="CopyFileToDirectoryTransactedAction.h" />
+    <ClInclude Include="CreateDirectoryTransactedAction.h" />
     <ClInclude Include="TransactedAction.h" />
     <ClInclude Include="winapi.h" />
     <ClInclude Include="install.h" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CopyFileToDirectoryTransactedAction.cpp" />
+    <ClCompile Include="CreateDirectoryTransactedAction.cpp" />
     <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="winapi.cpp" />
     <ClCompile Include="install.cpp" />
