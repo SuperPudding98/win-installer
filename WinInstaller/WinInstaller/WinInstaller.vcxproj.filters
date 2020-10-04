@@ -51,14 +51,11 @@
     <ClInclude Include="CopyFileToDirectoryTransactedAction.h">
       <Filter>Header Files\transactions</Filter>
     </ClInclude>
+    <ClInclude Include="CreateDirectoryAndParentsTransactedAction.h">
+      <Filter>Header Files\transactions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Win32Error.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="fsutils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,6 +77,8 @@
     <ClCompile Include="CopyFileToDirectoryTransactedAction.cpp">
       <Filter>Source Files\transactions</Filter>
     </ClCompile>
+    <ClCompile Include="CreateDirectoryAndParentsTransactedAction.cpp">
+      <Filter>Source Files\transactions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
