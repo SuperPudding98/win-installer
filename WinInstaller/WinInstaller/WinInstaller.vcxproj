@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="fsutils.h" />
+    <ClInclude Include="TransactedAction.h" />
     <ClInclude Include="winapi.h" />
     <ClInclude Include="install.h" />
     <ClInclude Include="Transaction.h" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fsutils.cpp" />
+    <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="winapi.cpp" />
     <ClCompile Include="install.cpp" />
     <ClCompile Include="main.cpp" />
