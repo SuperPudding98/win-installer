@@ -1,5 +1,6 @@
 #include "CreateDirectoryAndParentsTransactedAction.h"
 #include "CreateDirectoryTransactedAction.h"
+#include "Win32Error.h"
 
 
 namespace mywininstaller
@@ -37,9 +38,20 @@ namespace mywininstaller
 				for (; iterator != m_dirPath.end(); iterator++)
 				{
 					subpath /= *iterator;
-					m_innerTransaction.addAction(
-						std::make_unique<CreateDirectoryTransactedAction>(subpath, nullptr, true)
-					);
+					try
+					{
+						m_innerTransaction.addAction(
+							std::make_unique<CreateDirectoryTransactedAction>(subpath)
+						);
+					}
+					catch (const winapi::Win32Error& e)
+					{
+						// If a parent dir exists we can ignore error and move to next dir
+						if (e.getErrorCode() != ERROR_ALREADY_EXISTS)
+						{
+							throw;
+						}
+					}
 				}
 			}
 

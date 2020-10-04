@@ -7,21 +7,11 @@ namespace mywininstaller
 {
 	namespace winapi
 	{
-		bool createDirectoryThrows(LPCWSTR path, LPSECURITY_ATTRIBUTES securiryAttributes, bool existOK)
+		void createDirectoryThrows(LPCWSTR path, LPSECURITY_ATTRIBUTES securiryAttributes)
 		{
 			if (!CreateDirectoryW(path, securiryAttributes))
 			{
-				DWORD errorCode = GetLastError();
-				if (!(errorCode == ERROR_ALREADY_EXISTS && existOK))
-				{
-					throw Win32Error(errorCode);
-				}
-
-				return false;
-			}
-			else
-			{
-				return true;
+				throw Win32Error::fromLastError();
 			}
 		}
 

@@ -13,13 +13,11 @@ namespace mywininstaller
 			class CreateDirectoryTransactedAction : public TransactedAction
 			{
 			public:
-				CreateDirectoryTransactedAction(const std::filesystem::path& dirPath, LPSECURITY_ATTRIBUTES securiryAttributes = nullptr, bool existOK = false);
+				CreateDirectoryTransactedAction(const std::filesystem::path& dirPath, LPSECURITY_ATTRIBUTES securiryAttributes = nullptr);
 
 			private:
 				const std::filesystem::path m_dirPath;
 				const LPSECURITY_ATTRIBUTES m_securiryAttributes;
-				const bool m_existOK;
-				bool m_created;
 
 				void execute() override;
 				void rollback() override;
