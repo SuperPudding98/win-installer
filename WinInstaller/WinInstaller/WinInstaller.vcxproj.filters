@@ -46,6 +46,9 @@
       <Filter>Header Files\transactions</Filter>
     </ClInclude>
     </ClInclude>
+    <ClInclude Include="CopyFileToDirectoryTransactedAction.h">
+      <Filter>Header Files\transactions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Win32Error.cpp">
@@ -67,6 +70,9 @@
       <Filter>Source Files\winapi</Filter>
     </ClCompile>
     <ClCompile Include="Transaction.cpp">
+      <Filter>Source Files\transactions</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyFileToDirectoryTransactedAction.cpp">
       <Filter>Source Files\transactions</Filter>
     </ClCompile>
     </ClCompile>
